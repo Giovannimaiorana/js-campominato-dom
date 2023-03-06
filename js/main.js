@@ -7,6 +7,8 @@ let numeroquadrati;
 let classBox;
 let quantita = 16;
 let punteggio= 0;
+let partitaterminata=false;
+
 
 
 
@@ -43,20 +45,31 @@ function creazionegrigliacompleta(){
 }
 
 function creazionegriglia(){
+
+
+
+
     for(let i = 1; i <= numeroquadrati; i++){
         const element = creazioneElemento();
         element.classList.add(classBox);
         element.append(i);
         element.addEventListener('click', 
         function(){
-            if(arrayNumeri.includes(i)){
-                this.classList.add('bomba');
-                comunication.innerHTML="hai perso";
-            }else{
-                this.classList.add('clicked');
-                punteggio++;
-                comunication.innerHTML=`il tuo punteggio è ${punteggio};`
+            if(partitaterminata==false){
+                if(arrayNumeri.includes(i)){
+                    partitaterminata=true;
+                    this.classList.add('bomba');
+                    comunication.innerHTML=`hai perso con un punteggio di ${punteggio}`;
+                    alert("game over")
+                    
+    
+                }else{
+                    this.classList.toggle('clicked');
+                    punteggio++;
+                    comunication.innerHTML=`il tuo punteggio è ${punteggio};`
+                }
             }
+           
             
 
         }
