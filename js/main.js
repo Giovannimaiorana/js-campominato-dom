@@ -2,9 +2,11 @@
 const gridDom = document.getElementById('griglia');
 const selezione = document.getElementById('difficult');
 const play = document.getElementById ('btn');
+let comunication = document.getElementById('status');
 let numeroquadrati;
 let classBox;
 let quantita = 16;
+let punteggio= 0;
 
 
 
@@ -49,12 +51,14 @@ function creazionegriglia(){
         function(){
             if(arrayNumeri.includes(i)){
                 this.classList.add('bomba');
+                comunication.innerHTML="hai perso";
             }else{
                 this.classList.add('clicked');
-             
+                punteggio++;
+                comunication.innerHTML=`il tuo punteggio è ${punteggio};`
             }
             
-      
+
         }
         
         )
@@ -66,7 +70,6 @@ function generabomba(min, max, quantita){
      arrayNumeri=[];
     for(let i=1; i <= quantita; i++){
        arrayNumeri.push(Math.floor(Math.random() * (max - min + 1)) + min);
-       
     }
     console.log(arrayNumeri);
     return arrayNumeri;

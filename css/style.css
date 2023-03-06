@@ -72,3 +72,15 @@ main{
 .bomba{
     background-color: red;
 }
+#status{
+    height: 40px;
+    width: 300px;
+    border: 2px solid darkgoldenrod;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgoldenrod;
+    font-size: 10px;
+}
