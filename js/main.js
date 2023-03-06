@@ -4,8 +4,7 @@ const selezione = document.getElementById('difficult');
 const play = document.getElementById ('btn');
 let numeroquadrati;
 let classBox;
-let numeri = generanumeriCasuali(1, 100, 16);
-console.log(numeri);
+let quantita = 16;
 
 
 
@@ -13,6 +12,7 @@ play.addEventListener('click',
 function(){
    gridDom.innerHTML="";
     creazionegrigliacompleta();
+
 }
 )
 
@@ -26,14 +26,17 @@ function creazionegrigliacompleta(){
     if(selezione.value == "facile"){
         numeroquadrati= 100;
         classBox = "cellafacile";
+        generabomba(1,numeroquadrati,quantita);
     } else if (selezione.value == "intermedio"){
         numeroquadrati= 81;
         classBox = "cellamedia";
+        generabomba(1,numeroquadrati,quantita);
     } else if (selezione.value == "difficile"){
         numeroquadrati=49;
         classBox="celladifficile";
+        generabomba(1,numeroquadrati,quantita);
     }
-
+    
     creazionegriglia();
 }
 
@@ -44,9 +47,14 @@ function creazionegriglia(){
         element.append(i);
         element.addEventListener('click', 
         function(){
-            console.log(this);
-            this.classList.toggle('clicked');
-            console.log(`Hai scelto la casella numero ${i}`)
+            if(arrayNumeri.includes(i)){
+                this.classList.add('bomba');
+            }else{
+                this.classList.add('clicked');
+             
+            }
+            
+      
         }
         
         )
@@ -54,10 +62,11 @@ function creazionegriglia(){
     }  
 }
 //CREO FUNZIONE CHE CREI NUMERI CASUALI IN BASE AL RANGE DA NOI INSERITO
-function generanumeriCasuali(min, max, quantita){
-    let numeriCasuali=[];
-    for(let i=1; i < quantita; i++){
-        numeriCasuali.push(Math.floor(Math.random() * (max - min + 1)) + min);
+function generabomba(min, max, quantita){
+     arrayNumeri=[];
+    for(let i=1; i <= quantita; i++){
+       arrayNumeri.push(Math.floor(Math.random() * (max - min + 1)) + min);
     }
-    return numeriCasuali;
+    console.log(arrayNumeri);
+    return arrayNumeri;
 }
