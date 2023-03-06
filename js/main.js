@@ -4,6 +4,9 @@ const selezione = document.getElementById('difficult');
 const play = document.getElementById ('btn');
 let numeroquadrati;
 let classBox;
+let numeri = generanumeriCasuali(1, 100, 16);
+console.log(numeri);
+
 
 
 play.addEventListener('click',
@@ -49,4 +52,12 @@ function creazionegriglia(){
         )
         gridDom.append(element);
     }  
+}
+//CREO FUNZIONE CHE CREI NUMERI CASUALI IN BASE AL RANGE DA NOI INSERITO
+function generanumeriCasuali(min, max, quantita){
+    let numeriCasuali=[];
+    for(let i=1; i < quantita; i++){
+        numeriCasuali.push(Math.floor(Math.random() * (max - min + 1)) + min);
+    }
+    return numeriCasuali;
 }
