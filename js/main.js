@@ -66,6 +66,7 @@ function generabomba(min, max, quantita){
      arrayNumeri=[];
     for(let i=1; i <= quantita; i++){
        arrayNumeri.push(Math.floor(Math.random() * (max - min + 1)) + min);
+       
     }
     console.log(arrayNumeri);
     return arrayNumeri;
